@@ -1,9 +1,9 @@
 import React, { Component,  cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-
+// 第一、二、三个tab内容
 class TabPane extends React.Component {
-
+// classPrefix为tabs，这是从哪里传过来的？
 
   render() {
     const { classPrefix, className, isActive, children } = this.props;

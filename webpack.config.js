@@ -11,6 +11,7 @@ module.exports = {
     {
         'index':['./client/index.js'],
         'tabs':['./client/component/tab/app.js'],
+        'tab2':['./client/component/tab2/app.js']
     },
     output: {
         path: path.join(__dirname, 'tmp/'),  //这儿好像没起作用
@@ -38,10 +39,10 @@ module.exports = {
              },
              {
                 test: /\.css$/,
-                exclude: [
-                    path.resolve(__dirname, "node_modules")
-                ],
-                loader: sassLoader
+                loaders: [
+                    'style-loader?sourceMap',
+                    'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'
+                ]
              },
              {
                 test: /\.json?$/,

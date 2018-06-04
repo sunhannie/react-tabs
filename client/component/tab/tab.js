@@ -7,11 +7,6 @@ import tab from './tab.scss';
 
 
 class Tab extends React.Component {
-  // static propTypes = {
-    // postUrl: PropTypes.string,
-    // findPasswordUrl: PropTypes.string,
-    // registerUrl: PropTypes.string
-  // };
 
   constructor(props) {
     super(props);

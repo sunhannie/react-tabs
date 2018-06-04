@@ -6,23 +6,6 @@ import TabNav from './TabNav.js';
 import TabContent from './TabContent.js';
 
 class Tabs extends React.Component {
-  // static propTypes = {
-  //   className: PropTypes.string,
-  //   classPrefix: PropTypes.string,
-  //   children: PropTypes.oneOfType([
-  //     PropTypes.arrayOf(PropTypes.node),
-  //     PropTypes.node,
-  //   ]),
-  //   defaultActiveIndex: PropTypes.number,
-  //   activeIndex: PropTypes.number,
-  //   onChange: PropTypes.func
-  // };
-
-  // static defaultProps = {
-  //   classPrefix: 'tabs',
-  //   onChange: () => {},
-  // };
-
   constructor(props) {
     super(props);
 
@@ -105,4 +88,19 @@ class Tabs extends React.Component {
   }
 }
 
+Tabs.propTypes = {
+  className: PropTypes.string,
+  classPrefix: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
+  defaultActiveIndex: PropTypes.number,
+  activeIndex: PropTypes.number,
+  onChange: PropTypes.func
+};
+Tabs.defaultProps = {
+  classPrefix: 'tabs',
+  onChange: () => {},
+};
 export default Tabs;
