@@ -9,7 +9,8 @@ module.exports = {
     devtool: 'cheap-module-eval-source-map',
     entry:
     {
-        'index':['./client/index.js']
+        'index':['./client/index.js'],
+        'tabs':['./client/component/tab/app.js'],
     },
     output: {
         path: path.join(__dirname, 'tmp/'),  //这儿好像没起作用

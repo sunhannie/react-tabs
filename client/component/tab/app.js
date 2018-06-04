@@ -1,9 +1,8 @@
-
-
-/*import React, { Component, cloneElement } from 'react';
+import React, { Component, cloneElement } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import Tabs from './component/tab/Tabs';
-import TabPane from './component/tab/TabPane';
+import Tabs from './Tabs';
+import TabPane from './TabPane';
 
 class App extends Component {
   constructor(props) {
@@ -45,34 +44,4 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));*/
-
-import React, { Component, PropTypes, cloneElement } from 'react';
-import ReactDOM from 'react-dom';
-// import PropTypes from 'prop-types';
-
-import Tab from './component/tab/tab.js';
-
-
-class App extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {message: 'Hello!'};
-  }
-
-
-
-  render() {
-    return (
-    	<div>
-        <Tab />
-      </div>
-    );
-  }
-}
-
-ReactDOM.render(
-  <App/>,
-  document.getElementById('root')
-);
+ReactDOM.render(<App />, document.getElementById('root'));

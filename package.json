@@ -1,7 +1,7 @@
 {
   "name": "react-tabs",
   "version": "1.0.0",
-  "description": "it can switch tab using react technolege",
+  "description": "it can switch tab using react technology",
   "main": "index.js",
   "scripts": {
     "build": "webpack --config ./webpack.config.js --progress --profile --colors",

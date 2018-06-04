@@ -41,6 +41,12 @@ router.get('/', async ctx => {
   })
 });
 
+router.get('/tabs', async ctx => {
+  ctx.body = await render('tabs.html', {
+    pageTitle: '导航'
+  })
+});
+
 // router.get('/signup', async ctx => {
 //   ctx.body = await render('signup.html', {
 //     pageTitle: '注册'
