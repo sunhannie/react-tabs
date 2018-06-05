@@ -3,10 +3,10 @@ import { immutableRenderDecorator } from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import styles from './style.scss';
+import style from './style.scss';
 
 // @immutableRenderDecorator
-// @CSSModules(styles, { allowMultiple: true })
+// @CSSModules(style, { allowMultiple: true })
 class InkBar extends Component {
   render() {
     const { left, width } = this.props;
@@ -25,5 +25,5 @@ class InkBar extends Component {
     );
   }
 }
-
+// export default CSSModules(InkBar, style);
 export default InkBar;

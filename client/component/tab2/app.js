@@ -1,5 +1,3 @@
-
-
 import React, { Component, cloneElement } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';

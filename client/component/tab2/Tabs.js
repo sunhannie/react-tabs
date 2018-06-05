@@ -5,17 +5,12 @@ import TabNav from './TabNav';
 import TabContent from './TabContent';
 import { immutableRenderDecorator } from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules';
-import styles from './style.scss';
+import style from './style.scss';
 import { Seq } from 'immutable';
 
-
+// @immutableRenderDecorator
 class Tabs extends Component {
-
-
-  // static defaultProps = {
-  //   onChange: () => {},
-  // };
-
+// app.js中传过来props
   constructor(props) {
     super(props);
 
@@ -23,6 +18,8 @@ class Tabs extends Component {
 
     this.handleTabClick = this.handleTabClick.bind(this);
     this.immChildren = Seq(currProps.children);
+
+    // console.log(this.immChildren);
 
     let activeIndex;
     if ('activeIndex' in currProps) {
@@ -58,7 +55,7 @@ class Tabs extends Component {
       this.props.onChange({ activeIndex, prevIndex });
     }
   }
-
+// 父传给子props，动作从这里传递到TabNav，这样可以把activeIndex值传递过去（记住这种思想）
   renderTabNav() {
     return (
       <TabNav
@@ -75,11 +72,11 @@ class Tabs extends Component {
       <TabContent
         key="tabcontent"
         activeIndex={this.state.activeIndex}
-        panels={this.immChildren}
+        panels={this.immChildren}  //Tabs的孩子传给panels，在TabNav.js中获取props，就获得其每个child
       />
     );
   }
-
+// Tabs包含TabContent和TabNav,Tabs在app.js中使用，TabPane.js在app.js中使用
   render() {
     const { className } = this.props;
     const cx = classnames(className, 'ui-tabs');
@@ -99,7 +96,16 @@ Tabs.propTypes = {
   ]),
   defaultActiveIndex: PropTypes.number,
   activeIndex: PropTypes.number,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func
+};
+
+// Tabs.defaultProps = {
+//   onChange: () => {}
+// };
+
+Tabs.defaultProps = {
+  classPrefix: 'tabs',
+  onChange: () => {},
 };
 export default Tabs;
 

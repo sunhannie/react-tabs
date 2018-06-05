@@ -28,7 +28,7 @@ class TabNav extends Component {
 
       const ref = {};
       if (activeIndex === order) {
-        ref.ref = 'activeTab';
+        // ref.ref = 'activeTab';
       }
 
       return (

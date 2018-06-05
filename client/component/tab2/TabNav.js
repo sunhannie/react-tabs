@@ -5,8 +5,8 @@ import classnames from 'classnames';
 import { immutableRenderDecorator } from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules';
 import { Motion, spring } from 'react-motion';
-import styles from './style.scss';
 import InkBar from './InkBar';
+import style from './style.scss';
 
 function getOuterWidth(el) {
   return el.offsetWidth;
@@ -28,6 +28,8 @@ class TabNav extends Component {
 
   constructor(props) {
     super(props);
+    this.myRef = 1;
+    // console.log(React.createRef());
 
     this.state = {
       inkBarWidth: 0,
@@ -59,8 +61,21 @@ class TabNav extends Component {
     }
   }
 
+/**
+ * // Warning: TabNav: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. 
+ * key因为不是对象，所以显示以上提醒
+ * 
+ * panels：
+ * ArraySeq {_array: Array(3), size: 3}size: 3_array: Array(3)0: {$$typeof: Symbol(react.element), type: ƒ, key: null, ref: null, props: {…}, …}1: {$$typeof: Symbol(react.element), type: ƒ, key: null, ref: null, props: {…}, …}2: {$$typeof: Symbol(react.element), type: ƒ, key: null, ref: null, props: {…}, …}length: 3__proto__: Array(0)__proto__: IndexedIterable
+
+activeIndex：0
+
+order：0 1 2
+ */
+
   getTabs() {
-    const { panels, activeIndex } = this.props;
+    const { onTabClick,panels, activeIndex } = this.props;  //从Tabs.js来
+     
     const rst = [];
 
     return panels.map((child) => {
@@ -76,6 +91,7 @@ class TabNav extends Component {
 
       let events = {};
       if (!child.props.disabled) {
+        // console.log( child );
         events = {
           onClick: this.props.onTabClick.bind(this, order),
         };
@@ -83,19 +99,22 @@ class TabNav extends Component {
 
       const ref = {};
       if (activeIndex === order) {
-        ref.ref = 'activeTab';
+        
+        // ref.ref = 'activeTab';
       }
+      // 获取从Tabs传过来的child的props，返回一些标签
       return (
         <li
           role="tab"
           aria-disabled={child.props.disabled ? 'true' : 'false'}
           aria-selected={activeIndex === order? 'true' : 'false'}
           {...events}
-          styleName={classes}
+          className={classes}
           key={order}
           {...ref}
+         
         >
-          {child.props.tab}
+          {child.props.tab} 
         </li>
       );
     });
@@ -111,14 +130,16 @@ class TabNav extends Component {
     const classes = classnames({
       nav: true,
     });
-
+ 
+ {/*{this.getTabs()}把获得的标签引入TabNav组件中   */}  
     return (
+
       <div className={rootClasses} role="tablist">
         <Motion style={{ left: spring(this.state.inkBarLeft) }}>
           {({ left }) => <InkBar width={this.state.inkBarWidth} left={left} />}
         </Motion>
         <ul className={classes}>
-          {this.getTabs()}
+          {this.getTabs()}   
         </ul>
       </div>
     );
@@ -129,3 +150,4 @@ class TabNav extends Component {
     activeIndex: PropTypes.number,
   };
 export default TabNav;
+// export default CSSModules(TabNav, style);
